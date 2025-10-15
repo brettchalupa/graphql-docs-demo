@@ -130,7 +130,7 @@ Open `docs/index.html` in your browser directly, or:
 **Option 1: Use this demo's Sinatra app (already configured!)**
 
 ```bash
-bundle exec rake server
+bundle exec rake serve
 # Visit http://localhost:4567/docs/
 ```
 
@@ -314,7 +314,7 @@ bundle install
 Start the GraphQL API server:
 
 ```bash
-bundle exec rake server
+bundle exec rake serve
 # or: bundle exec ruby app.rb
 ```
 
@@ -489,7 +489,7 @@ bundle exec rake lint
 bundle exec rake lint_fix
 
 # Start the server
-bundle exec rake server
+bundle exec rake serve
 
 # Dump GraphQL schema to schema.graphql file
 bundle exec rake schema:dump
