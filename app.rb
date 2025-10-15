@@ -143,16 +143,18 @@ get "/" do
                     margin-top: 0;
                     color: #667eea;
                   }
-                  .quick-start code {
-                    display: block;
+                  .quick-start pre {
                     background: #1e1e1e;
                     color: #d4d4d4;
                     padding: 15px;
                     border-radius: 4px;
                     overflow-x: auto;
                     margin: 10px 0;
+                  }
+                  .quick-start code {
                     font-family: 'Courier New', monospace;
                     font-size: 14px;
+                    line-height: 1.5;
                   }
                   .quick-start ol {
                     margin: 10px 0;
@@ -304,25 +306,28 @@ get "/" do
                     <ol>
                       <li><strong>Add the gem to your Gemfile:</strong></li>
                     </ol>
-                    <code>gem "graphql-docs", "~> 5.0"</code>
-    
+                    <pre><code>gem "graphql-docs", "~> 5.0"</code></pre>
+
                     <ol start="2">
-                      <li><strong>Create a Rake task:</strong></li>
+                      <li><strong>Create a Rake task (in your Rakefile):</strong></li>
                     </ol>
-                    <code>require "graphql-docs"
-    
-    GraphQLDocs.build(
-      schema: YourSchema,
-      output_dir: "./docs",
-      delete_output: true,
-      base_url: "/docs"
-    )</code>
-    
+                    <pre><code>desc "Generate GraphQL documentation"
+task :docs do
+  require "graphql-docs"
+
+  GraphQLDocs.build(
+    schema: YourSchema,
+    output_dir: "./docs",
+    delete_output: true,
+    base_url: "/docs"
+  )
+end</code></pre>
+
                     <ol start="3">
                       <li><strong>Generate documentation:</strong></li>
                     </ol>
-                    <code>bundle exec rake docs</code>
-    
+                    <pre><code>bundle exec rake docs</code></pre>
+
                     <p style="margin-top: 20px;"><strong>That's it!</strong> You now have comprehensive, searchable documentation for your entire GraphQL API.</p>
                   </div>
     
@@ -350,13 +355,13 @@ get "/" do
                     <p>This demo provides a GraphQL API for classic books. Try out some queries below to see the API in action, then check out the <a href="/docs/">generated documentation</a> to see how graphql-docs documents it.</p>
     
                     <textarea id="query" placeholder="Enter your GraphQL query here...">query {
-          books {
-            title
-            author
-            slug
-            readCount
-          }
-        }</textarea>
+  books {
+    title
+    author
+    slug
+    readCount
+  }
+}</textarea>
                     <button onclick="executeQuery()">Execute Query</button>
                   </div>
     
@@ -371,39 +376,39 @@ get "/" do
                     <div class="example">
                       <div class="example-title">Get All Books</div>
                       <div class="example-query" onclick="loadExample(this)">query {
-          books {
-            title
-            author
-            slug
-            readCount
-          }
-        }</div>
+  books {
+    title
+    author
+    slug
+    readCount
+  }
+}</div>
                     </div>
-    
+
                     <div class="example">
                       <div class="example-title">Get Book by Slug</div>
                       <div class="example-query" onclick="loadExample(this)">query {
-          book(slug: "pride-and-prejudice") {
-            title
-            author
-            publishedYear
-            description
-            genre
-            pages
-            readCount
-          }
-        }</div>
+  book(slug: "pride-and-prejudice") {
+    title
+    author
+    publishedYear
+    description
+    genre
+    pages
+    readCount
+  }
+}</div>
                     </div>
-    
+
                     <div class="example">
                       <div class="example-title">Mark Book as Read (Mutation)</div>
                       <div class="example-query" onclick="loadExample(this)">mutation {
-          markAsRead(slug: "1984") {
-            title
-            author
-            readCount
-          }
-        }</div>
+  markAsRead(slug: "1984") {
+    title
+    author
+    readCount
+  }
+}</div>
                     </div>
                   </div>
     
