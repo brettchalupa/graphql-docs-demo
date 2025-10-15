@@ -1,0 +1,80 @@
+books:
+  - title: "Pride and Prejudice"
+    author: "Jane Austen"
+    slug: "pride-and-prejudice"
+    published_year: 1813
+    description: "A romantic novel of manners that follows the character development of Elizabeth Bennet, who learns about the repercussions of hasty judgments and comes to appreciate the difference between superficial goodness and actual goodness."
+    genre: "Romance"
+    pages: 432
+
+  - title: "To Kill a Mockingbird"
+    author: "Harper Lee"
+    slug: "to-kill-a-mockingbird"
+    published_year: 1960
+    description: "Set in the American South during the 1930s, the story follows young Scout Finch as her father, Atticus, defends a Black man unjustly accused of rape, teaching her about justice, prejudice, and moral courage."
+    genre: "Fiction"
+    pages: 324
+
+  - title: "1984"
+    author: "George Orwell"
+    slug: "1984"
+    published_year: 1949
+    description: "A dystopian social science fiction novel that follows Winston Smith, a low-ranking member of 'the Party,' who is frustrated by the omnipresent eyes of the party and its ominous ruler Big Brother."
+    genre: "Dystopian Fiction"
+    pages: 328
+
+  - title: "The Great Gatsby"
+    author: "F. Scott Fitzgerald"
+    slug: "the-great-gatsby"
+    published_year: 1925
+    description: "Set in the Jazz Age on Long Island, the novel depicts narrator Nick Carraway's interactions with the mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan."
+    genre: "Fiction"
+    pages: 180
+
+  - title: "Moby-Dick"
+    author: "Herman Melville"
+    slug: "moby-dick"
+    published_year: 1851
+    description: "The narrative of Captain Ahab's obsessive quest for revenge on Moby Dick, the white whale that destroyed his ship and severed his leg. Ishmael, a sailor, narrates the monomaniacal voyage of the Pequod."
+    genre: "Adventure"
+    pages: 635
+
+  - title: "Jane Eyre"
+    author: "Charlotte Brontë"
+    slug: "jane-eyre"
+    published_year: 1847
+    description: "The story follows the experiences of the eponymous heroine, including her growth to adulthood and her love for Mr. Rochester, the brooding master of Thornfield Hall."
+    genre: "Romance"
+    pages: 507
+
+  - title: "Wuthering Heights"
+    author: "Emily Brontë"
+    slug: "wuthering-heights"
+    published_year: 1847
+    description: "A tale of passion, revenge, and the destructive nature of love, centered on the tempestuous relationship between Heathcliff and Catherine Earnshaw on the Yorkshire moors."
+    genre: "Gothic Fiction"
+    pages: 416
+
+  - title: "The Catcher in the Rye"
+    author: "J.D. Salinger"
+    slug: "the-catcher-in-the-rye"
+    published_year: 1951
+    description: "The story of Holden Caulfield, a teenager from New York City who is expelled from prep school and experiences a few days of wandering in New York City, grappling with complex questions of innocence, identity, and connection."
+    genre: "Fiction"
+    pages: 277
+
+  - title: "The Adventures of Huckleberry Finn"
+    author: "Mark Twain"
+    slug: "the-adventures-of-huckleberry-finn"
+    published_year: 1884
+    description: "The story follows Huckleberry Finn as he travels down the Mississippi River with a runaway slave named Jim, exploring themes of race, identity, and freedom in the pre-Civil War South."
+    genre: "Adventure"
+    pages: 366
+
+  - title: "Brave New World"
+    author: "Aldous Huxley"
+    slug: "brave-new-world"
+    published_year: 1932
+    description: "A dystopian novel set in a futuristic World State, where citizens are environmentally engineered into an intelligence-based social hierarchy and conditioned to serve the ruling class."
+    genre: "Dystopian Fiction"
+    pages: 311

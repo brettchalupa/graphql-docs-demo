@@ -1,0 +1,33 @@
+type Book {
+  author: String!
+  description: String
+  genre: String
+  pages: Int
+  publishedYear: Int!
+
+  """
+  Number of times this book has been read
+  """
+  readCount: Int!
+  slug: String!
+  title: String!
+}
+
+type Mutation {
+  """
+  Mark a book as read and increment its read count
+  """
+  markAsRead(slug: String!): Book
+}
+
+type Query {
+  """
+  Returns a single book by slug
+  """
+  book(slug: String!): Book
+
+  """
+  Returns a list of all books
+  """
+  books: [Book!]!
+}
