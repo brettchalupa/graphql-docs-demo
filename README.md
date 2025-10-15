@@ -1,6 +1,6 @@
 # GraphQL Books API Demo
 
-![CI](https://github.com/YOUR_USERNAME/graphql-docs_demo/workflows/CI/badge.svg)
+![CI](https://github.com/brettchalupa/graphql-docs-demo/workflows/CI/badge.svg)
 
 > **This is a sample/demonstration project for the [graphql-docs](https://rubygems.org/gems/graphql-docs) gem ([GitHub](https://github.com/brettchalupa/graphql-docs)).**
 
@@ -19,7 +19,7 @@ graphql-docs is a Ruby gem that automatically generates beautiful, static HTML d
 ```bash
 # Clone and install
 git clone <this-repo>
-cd graphql-docs_demo
+cd graphql-docs-demo
 bundle install
 
 # Generate documentation
@@ -47,13 +47,16 @@ This demo shows everything you need to integrate graphql-docs into your own proj
 This demo implements a Books API with classic literature:
 
 **Types:**
+
 - `Book` - Classic book with title, author, slug, description, genre, pages, and read count
 
 **Queries:**
+
 - `books` - Get all books
 - `book(slug:)` - Get a specific book by slug
 
 **Mutations:**
+
 - `markAsRead(slug:)` - Mark a book as read (increments read count)
 
 ## How to Integrate graphql-docs Into Your Project
@@ -70,11 +73,13 @@ This demo shows the **Ruby API approach** (using `GraphQLDocs.build` in a Rake t
 Add to your `Gemfile`:
 
 **From RubyGems (stable):**
+
 ```ruby
 gem "graphql-docs", "~> 5.0"
 ```
 
 **From GitHub (latest, as used in this demo):**
+
 ```ruby
 gem "graphql-docs", github: "brettchalupa/graphql-docs", branch: "main"
 ```
@@ -306,7 +311,7 @@ Just start the server and visit `http://localhost:4567/docs/`
 
 ```bash
 git clone <this-repo>
-cd graphql-docs_demo
+cd graphql-docs-demo
 bundle install
 ```
 
@@ -320,6 +325,7 @@ bundle exec rake server
 ```
 
 Then visit:
+
 - `http://localhost:4567` - Interactive GraphQL playground
 - `http://localhost:4567/docs/` - Generated API documentation (after running `rake docs`)
 
@@ -463,6 +469,7 @@ This is a demonstration project. Feel free to fork and modify for your own learn
 **The entire purpose of this project is to demonstrate how easy it is to add comprehensive documentation to your GraphQL API using graphql-docs. Just add the gem, create a rake task, and run it!**
 
 Try it now:
+
 ```bash
 bundle exec rake docs
 open docs/index.html

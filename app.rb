@@ -412,7 +412,7 @@ get "/" do
                     <a href="https://rubygems.org/gems/graphql-docs" target="_blank">RubyGems</a>
                     <a href="https://github.com/brettchalupa/graphql-docs" target="_blank">GitHub Repository</a>
                     <a href="/docs/">View Generated Docs</a>
-                    <a href="https://github.com/brettchalupa/graphql-docs_demo" target="_blank">Demo Source Code</a>
+                    <a href="https://github.com/brettchalupa/graphql-docs-demo" target="_blank">Demo Source Code</a>
                   </div>
                 </div>
     
