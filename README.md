@@ -262,39 +262,33 @@ field :book, BookType, null: true, description: "Fetch a single book by its uniq
 end
 ```
 
-## Deploying Documentation
+## Deployment
 
-The generated docs are static HTML, so you can:
+### Deploying to Fly.io
+
+This project is configured for deployment to [Fly.io](https://fly.io) using the included Dockerfile whenever code is pushed to GitHub.
+
+The Dockerfile will automatically:
+
+1. Build the container image
+2. Install dependencies (including git for GitHub gem sources)
+3. Generate the GraphQL documentation during build
+4. Deploy to Fly.io
+
+**Fly.io configuration:**
+
+- `fly.toml` - App configuration (region, VM size, port, etc.)
+- `Dockerfile` - Container build instructions
+- `Procfile` - Process configuration (optional, Dockerfile CMD is used)
+
+### Deploying Documentation to Other Platforms
+
+The generated docs in `docs/` are static HTML, so you can also:
 
 - **Commit to repo** - Version with your code
 - **Deploy to GitHub Pages** - Free hosting for public repos
 - **Upload to S3/CDN** - Fast global delivery
 - **Serve from your app** - Integrate with your Rails/Sinatra app
-
-### Example: Serving from Sinatra
-
-This demo already serves the docs at `/docs/`! See the implementation in `app.rb:31-48`:
-
-```ruby
-# Serve generated GraphQL documentation
-get "/docs/?*" do
-  # Handle the splat parameter to build the file path
-  path = params["splat"]&.first || ""
-  file_path = File.join("docs", path)
-
-  # If it's a directory, serve index.html
-  if File.directory?(file_path)
-    file_path = File.join(file_path, "index.html")
-  end
-
-  # Serve the file if it exists
-  if File.exist?(file_path)
-    send_file file_path
-  else
-    halt 404, "Documentation not found. Run 'rake docs' to generate it."
-  end
-end
-```
 
 Just start the server and visit `http://localhost:4567/docs/`
 
@@ -382,6 +376,103 @@ curl -X POST http://localhost:4567/graphql \
 
 ## Development
 
+### Docker/Podman Development
+
+This project includes a production-ready Dockerfile for deployment to Fly.io or any container platform. You can also use it for local development.
+
+#### Building the Container Image
+
+With Docker:
+
+```bash
+docker build -t graphql-docs-demo .
+```
+
+With Podman:
+
+```bash
+podman build -t graphql-docs-demo .
+```
+
+The build process automatically:
+
+1. Installs git and dependencies (required for GitHub gem sources)
+2. Installs Ruby gems including `graphql-docs` from GitHub
+3. Runs `bundle exec rake docs` to generate documentation
+4. Creates an optimized production image
+
+#### Running the Container
+
+With Docker:
+
+```bash
+# Run in foreground
+docker run --rm -p 8080:8080 graphql-docs-demo
+
+# Run in background
+docker run -d -p 8080:8080 --name graphql-docs graphql-docs-demo
+
+# Stop background container
+docker stop graphql-docs
+```
+
+With Podman:
+
+```bash
+# Run in foreground
+podman run --rm -p 8080:8080 graphql-docs-demo
+
+# Run in background
+podman run -d -p 8080:8080 --name graphql-docs graphql-docs-demo
+
+# Stop background container
+podman stop graphql-docs
+```
+
+Then visit:
+
+- `http://localhost:8080` - Interactive GraphQL playground
+- `http://localhost:8080/docs/` - Generated API documentation
+- `http://localhost:8080/graphql` - GraphQL API endpoint
+
+#### Testing the Container
+
+Test the GraphQL endpoint:
+
+```bash
+curl -X POST http://localhost:8080/graphql \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ books { title author } }"}'
+```
+
+Test the docs are accessible:
+
+```bash
+curl http://localhost:8080/docs/
+```
+
+#### Inspecting the Container
+
+Check that docs were generated during build:
+
+```bash
+# With Docker
+docker run --rm graphql-docs-demo ls -la /app/docs
+
+# With Podman
+podman run --rm graphql-docs-demo ls -la /app/docs
+```
+
+Open a shell in the container:
+
+```bash
+# With Docker
+docker run --rm -it graphql-docs-demo /bin/bash
+
+# With Podman
+podman run --rm -it graphql-docs-demo /bin/bash
+```
+
 ### Rake Tasks
 
 ```bash
@@ -440,11 +531,15 @@ bundle exec rake test
 .
 ├── app.rb                   # Sinatra app with GraphQL endpoint + playground
 ├── schema.rb                # GraphQL schema (types, queries, mutations)
+├── config.ru                # Rack config for Puma (required for containerized deployment)
 ├── data/books.yml           # Books database (YAML)
 ├── test/graphql_test.rb     # Test suite
 ├── Rakefile                 # Rake tasks including 'docs' task ⭐
 ├── Gemfile                  # Dependencies including graphql-docs gem ⭐
 ├── docs/                    # Generated documentation (run 'rake docs') ⭐
+├── Dockerfile               # Container image for deployment
+├── fly.toml                 # Fly.io deployment configuration
+├── Procfile                 # Process configuration for Fly.io
 └── README.md                # You are here!
 ```
 
